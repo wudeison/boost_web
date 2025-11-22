@@ -1,22 +1,16 @@
 const express = require("express");
 const cors = require("cors");
-
 const app = express();
 const PORT = 4000;
 
 app.use(cors());
 app.use(express.json());
 
-// Importar rutas
-const registroRutas = require("./registro");
-const loginRutas = require("./login");
-
-// Usar rutas
-app.use("/api", registroRutas);
-app.use("/api", loginRutas);
+app.post("/api/test", (req, res) => {
+  console.log("✅ Datos recibidos:", req.body);
+  res.json({ mensaje: "Datos recibidos correctamente" });
+});
 
 app.listen(PORT, () => {
   console.log(`🚀 Backend activo en http://localhost:${PORT}`);
 });
-
-
